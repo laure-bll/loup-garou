@@ -9,6 +9,7 @@ abstract class AbstractPlayer {
   protected bool $isAlive;
   protected bool $isAwake;
   protected AbstractPlayer | null $marriedWith;
+  protected array $deadPlayers = [];
 
   public function __construct(string $name) {
     $this->name = $name;

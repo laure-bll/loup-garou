@@ -5,9 +5,9 @@ use Exception;
 use App\Entity\Abstract\AbstractPlayer;
 
 interface AbstractControllerInterface {
-  public function sleep(): bool;
+  public function sleep(): bool | Exception;
 
-  public function wakeUp(): bool;
+  public function wakeUp(): bool | Exception;
 
   public function chooseMayor(AbstractPlayer $character): AbstractPlayer | Exception;
 

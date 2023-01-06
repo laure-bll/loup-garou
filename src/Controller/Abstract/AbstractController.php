@@ -11,16 +11,20 @@ class AbstractController extends AbstractPlayer implements AbstractControllerInt
     parent::__construct($player->name);
   }
 
-  public function sleep(): bool {
+  public function sleep(): bool | Exception {
     if($this->isAlive === true) {
       return $this->isAwake = false;
     }
+
+    return throw new Exception("Les morts dorment déjà.");
   }
 
-  public function wakeUp(): bool {
+  public function wakeUp(): bool | Exception {
     if($this->isAlive === true) {
       return $this->isAwake = true;
     }
+
+    return throw new Exception("Les morts ne se réveillent pas.");
   }
 
   public function chooseMayor(AbstractPlayer $character): AbstractPlayer | Exception {
@@ -35,7 +39,8 @@ class AbstractController extends AbstractPlayer implements AbstractControllerInt
     if($target->isAlive === true) {
       return $target;
     }
-
-    return throw new \Exception("Vous ne pouvez pas accuser un mort.");
+    else {
+      return throw new \Exception("Vous ne pouvez pas accuser un mort.");
+    }
   }
 }
