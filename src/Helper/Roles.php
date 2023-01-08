@@ -1,8 +1,12 @@
 <?php
 namespace App\Helper;
 
-function roles(): array {
-  return [
+/**
+ *  Retourne les rôles disponibles dans le jeu.
+ **/
+function roles(): array
+{
+    return [
     "Cupidon",
     "Chasseur",
     "Petite fille",
@@ -11,7 +15,7 @@ function roles(): array {
     "Voyante",
     "Loup-garou",
     "Sorcière"
-  ];
+    ];
 }
 
 return roles();

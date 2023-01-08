@@ -42,7 +42,7 @@ $players = [$hunter, $witch, $wereWolf, $voyant, $cupid, $villager, $littleGirl]
 
 // STEP 1 TOUT LE MONDE DORT
 foreach($players as $player) {
-  $player->sleep();
+    $player->sleep();
 }
 
 echo "Tout le monde se réveille." . PHP_EOL;
@@ -54,13 +54,13 @@ $cupid->sleep();
 
 // STEP 4 TOUT LE MONDE SE REVEILLE
 foreach($players as $player) {
-  $player->wakeUp();
+    $player->wakeUp();
 }
 
 // STEP 4 ELECTION DU MAIRE
 $votes = [];
 foreach($players as $player) {
-  $vote[] = rand(0, count($players) - 1);
+    $vote[] = rand(0, count($players) - 1);
 }
 
 array_count_values($votes);
@@ -75,16 +75,16 @@ $players[$indexOfNewMayor] = $mayor;
 
 // STEP 5 TOUT LE MONDE DORT
 foreach($players as $player) {
-  $player->sleep();
+    $player->sleep();
 }
 
 echo "Tout le monde dort." . PHP_EOL;
 
 // STEP 6 LES LOUPS GAROUS SE REVEILLENT ET TUENT
 foreach($players as $player) {
-  if(is_a($player, WereWolfController::Class)) {
-    $player->wakeUp();
-  }
+    if (is_a($player, WereWolfController::Class)) {
+        $player->wakeUp();
+    }
 }
 
 echo "Les loups-garous se réveillent." . PHP_EOL;
@@ -93,9 +93,9 @@ $wereWolf->kill($players[rand(0, count($players) - 1)]);
 $littleGirl->openHerEyes();
 
 foreach($players as $player) {
-  if(is_a($player, WereWolfController::Class)) {
-    $player->sleep();
-  }
+    if (is_a($player, WereWolfController::Class)) {
+        $player->sleep();
+    }
 }
 
 echo "Les loups-garous se rendorment." . PHP_EOL;
@@ -117,7 +117,7 @@ echo "La sorcière se rendort." . PHP_EOL;
 
 // STEP 9 TOUT LE MONDE SE REVEILLE
 foreach($players as $player) {
-  $player->wakeUp();
+    $player->wakeUp();
 }
 
 echo "Tout le monde se réveille." . PHP_EOL;
@@ -126,7 +126,7 @@ echo "Tout le monde se réveille." . PHP_EOL;
 $votes = [];
 
 foreach($players as $player) {
-  array_push($votes, $player->accuse($players[rand(0, count($players) - 1)]));
+    array_push($votes, $player->accuse($players[rand(0, count($players) - 1)]));
 }
 
 echo "Tout le monde vote." . PHP_EOL;
@@ -150,18 +150,19 @@ echo "FIN DU JEU : tous les loups garous sont morts, vive les villageois !!" . P
 // ------------LOGIQUE DU VOTE----------------- //
 // -------------------------------------------- //
 
-function selectPlayer($personnages) {
-  $votes = [];
+function selectPlayer($personnages)
+{
+    $votes = [];
   
-  foreach($personnages as $personnage) {
-    array_push($votes, $personnage->accuse($personnages[rand(0, count($players) - 1)]));
-  }
+    foreach($personnages as $personnage) {
+        array_push($votes, $personnage->accuse($personnages[rand(0, count($personnages) - 1)]));
+    }
   
-  $indexVotes = array_keys($votes);
+    $indexVotes = array_keys($votes);
   
-  array_count_values($indexVotes);
-  asort($votes);
-  $personnageChoisi = end($votes);
+    array_count_values($indexVotes);
+    asort($votes);
+    $personnageChoisi = end($votes);
   
-  return $personnageChoisi;
+    return $personnageChoisi;
 }
